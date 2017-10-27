@@ -8,7 +8,8 @@ import util
 
 
 def msg_handler(file_handle, msg):
-  file_handle.write(msg)
+  print("Received MSG of length" + str(len(msg)))
+  file_handle.write(msg.decode("utf-8", "ignore"))
 
 
 if __name__ == '__main__':
@@ -19,7 +20,7 @@ if __name__ == '__main__':
   transport_layer = None
   transport_layer_name = sys.argv[1]
   file_name = sys.argv[2]
-  assert not os.path.exists(file_name)
+  assert os.path.exists(file_name)
   file_handle = None
   try:
     file_handle = open(file_name, 'w')

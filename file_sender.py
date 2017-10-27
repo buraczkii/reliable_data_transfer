@@ -21,12 +21,12 @@ if __name__ == '__main__':
         transport_layer_name,
         config.SENDER_LISTEN_PORT,
         config.RECEIVER_LISTEN_PORT, None)
-    with open(file_name, 'r') as f:
+    with open(file_name, 'rb') as f:
       while True:
         msg = f.read(config.MAX_MESSAGE_SIZE)
         if not msg: break
         print('MSG of length ' + str(len(msg)))
-        while not transport_layer.send(str.encode(msg)):
+        while not transport_layer.send(msg):
           pass
   finally:
     if transport_layer:
