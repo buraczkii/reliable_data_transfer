@@ -75,9 +75,17 @@ When calculating the checksum for a newly created packet, the value for the chec
 
 
 ##### Playing around with network layer parameters:
+```bash
+    values (BIT_ERROR_PROB, MSG_LOST_PROB, RTT)
+```
+
+How are the protocols affected by different network conditions? (using `demo_receiver` and `_sender`)
 
 
-- error rate probability
-- packet loss probability
-- RTT
-- How is protocol affected?
+|                                   | Stop and Wait | Go Back N  |
+| -------------                     |:-------------:|:-----|
+| Perfect Network (0, 0, 20ms)      | right-aligned | $1600 |
+| Standard (0.1, 0.1, 100ms)        | centered      |   $12 |
+| High corruption (0.5, 0.1, 100ms) | are neat      |    $1 |
+| High drop rate (0.1, 0.5, 100ms)  | centered      |   $12 |
+| High RTT (0.1, 0.1, 150)          | are neat      |    $1 |
