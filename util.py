@@ -1,30 +1,65 @@
+import config
 import dummy
 import gbn
 import ss
 import struct
 
-MAX = 1 << 16
-ALL_ONES_16_BIT = 65535
+SIXTEEN_BIT_MASK = 0xffff
 
-def add_16_bit_nums(n1,n2):
-  res = n1 + n2
-  if res.bit_length() <= 16: return res
-  return (res + 1) % MAX # wrap the carry when necessary
+# A class to wrap various pieces of information included in a data packet which includes the
+# type of message (ACK or DATA), the sequence number, the checksum value, and the payload. In
+# addition, it contains a boolean flag indicating bit corruption.
+class RDTPacket:
+  def __init__(self, msg_type=None, seq_num=None, checksum=None, payload=None, is_corrupt=True):
+    self.msg_type = msg_type
+    self.seq_num = seq_num
+    self.checksum = checksum
+    self.payload = payload
+    self.is_corrupt = is_corrupt
 
-# TODO: Assert that this function works as expected
+####################################################
+
 def get_checksum(pkt):
   checksum = 0
-  bytes = pkt.encode()
-  byte_list = list(bytes[i:i+2] for i in range(0, len(bytes), 2))
-
+  byte_list = list(pkt[i:i+2] for i in range(0, len(pkt), 2))
   for chunk in byte_list:
-    if len(chunk) ==1:
-      num = struct.unpack('B', chunk)[0]
-    else:
-      num = struct.unpack('H', chunk)[0]
-    checksum = add_16_bit_nums(checksum, num)
+    num = struct.unpack('!H', chunk)[0] if len(chunk) == 2 else struct.unpack('!B', chunk)[0]
+    checksum += num
+  # fold the carry so the checksum is 16 bits long
+  checksum = (checksum >> 16) + (checksum & SIXTEEN_BIT_MASK)
+  return checksum ^ SIXTEEN_BIT_MASK   # get one's complement
 
-  return checksum ^ 65535   # get one's complement
+
+def make_packet(msg, type, seq_num):
+  bytelist = []
+  bytelist.append(struct.pack('!H', type))      # HEADER 1: MESSAGE TYPE
+  bytelist.append(struct.pack('!H', seq_num))   # HEADER 2: SEQUENCE NUMBER
+  bytelist.append(struct.pack('!H', 0))         # HEADER 3: CHECKSUM (append 0 for now)
+  bytelist.append(msg.encode())                 # The payload # TODO: will the message be given as string or bytes object?
+
+  checksum = get_checksum(b''.join(bytelist))
+  checksum_bytes = struct.pack("!H", checksum)
+  assert len(checksum_bytes) == 2
+
+  bytelist[2] = checksum_bytes   # substitute checksum field with calculated checksum
+  packet = b''.join(bytelist)
+  return packet
+
+
+# TODO: check that this works
+def extract_data(msg):
+  assert len(msg) >= 6
+  # TODO: if during extraction, the packet is found to be corrupt, return the packet below
+  corrupt_packet = RDTPacket() # TODO: try to put whatever data you have in there
+
+  # TODO: given a full packet, extract the payload from the message. Return as RDTPacket object
+  #packet = RDTPacket(msg_type, seq_num, checksum, payload, False)
+  #1. calculate the checksum
+  #2. compare the checksum to the 5-6bytes of the packet and see if they match
+  #3. iterate through the message: the first 3 2-byte chunks are the headers. the rest is the
+  # payload.
+  # assert that msg is at least 6 bytes
+  return corrupt_packet
 
 
 def get_transport_layer_by_name(name, local_port, remote_port, msg_handler):
@@ -38,11 +73,7 @@ def get_transport_layer_by_name(name, local_port, remote_port, msg_handler):
 
 
 
-# res = add_16_bit_nums(int('1010001111101001',2), int('1000000110110101',2))
-# print(res)
-# print(bin(res))
-# check = get_checksum("hbiqwefhwisuhjuqw3ueioj32reuhiwjk3ewisuhjkeqwdsuihjkewfgrvd9ougk3rqwesdy8oihljwreds")
-# print(check)
-# print(bin(check))
-#
-# print(bin(check ^ 65535))
+# s = '4500003044224000800600008c7c19acae241e2b'
+# bs = bytearray.fromhex(s)
+# c = get_checksum(bs)
+# print(c)

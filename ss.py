@@ -1,7 +1,7 @@
 import config
-import struct
 import udt
 import util
+from threading import Timer
 
 
 # Stop-And-Wait reliable transport protocol.
@@ -12,90 +12,84 @@ class StopAndWait:
     self.network_layer = udt.NetworkLayer(local_port, remote_port, self)
     self.msg_handler = msg_handler
     self.sequence_num = 0 # this is the sequence number flag
-    #self.slock = threading.Lock()
-    # TODO: need to start a timer in here for the sender & respond appropriately to timeout
-    # TODO: need to figure out a way to handle a timers starts and stops
+    #self.slock = threading.Lock() # TODO: figure out if you need a lock for anything
+    self.timer = Timer(config.TIMEOUT_MSEC, self._timeout) # creating a timer thats ready to go
     # TODO: figure out how to create separate instances of this class so its threadsafe
-    # TODO: SENDER: keep track of state (0 or 1) && store the last packet sent
-    # TODO: SENDER: keep track of if waiting for call from above or if waiting for ACK
-    # TODO: RECEIVER: keep track of state (0 or 1) && store the last packet sent
+    # threading.Thread(target=self._packet_reader).start() # from udt class
 
-  # "send" is called by application. Return true on success, false
-  # otherwise.
-  # TODO: AKA rdt_send
+    # TODO: SENDER: keep track of seq# (0 or 1) && last packet sent && if waiting for call from above or for ACK
+    self.sender_seq_num = 0 # this also represents part of the state
+    self.sender_last_pkt = ""
+    self.sender_waiting_for = config.MSG_TYPE_ACK # this may be converted into a lock
+
+    # TODO: RECEIVER: keep track of state (0 or 1) && store the last packet sent
+    self.receiver_seq_num = 0
+    self.receiver_last_pkt = ""
+
+  # "send" is called by application. Return true on success, false otherwise.
   def send(self, msg):
+    # TODO: can this be called while waiting for the last ACK? need a way to wait here if the timer is still going
+    # TODO: need to lock here? put a lock on sending until the ack has been received
     # TODO: this will only ever be called by the sender to resend msg type DATA packets
     # Create a packet with the current sender state as the sequence number
-    # Send the packet to the network
-    # Start the timer
-    packet = self.make_packet(self, msg, config.MSG_TYPE_DATA)
+    packet = util.make_packet(msg, config.MSG_TYPE_DATA, self.sender_seq_num)
     self.network_layer.send(packet)
-    pass
+    self.sender_last_pkt = packet # store the last packet sent
+    self.sender_waiting_for = config.MSG_TYPE_ACK
+    self.timer.start()
+
 
   # "handler" to be called by network layer when packet is ready.
   # from BELOW
-  # TODO: AKA rdt_rcv
   def handle_arrival_msg(self):
-    # TODO: impl protocol to handle arrived packet from network layer.
     msg = self.network_layer.recv()
+    msg_data = util.extract_data(msg)
 
     # TODO: if the packet received is ACK, this regards the sender
     # CASE1: waiting for call from above => do nothing (either state 0 or 1)
+    if(self.sender_waiting_for == config.MSG_TYPE_DATA):
+      pass
     # CASE2: waiting for ack:
-    #   (A) data is corrupt or has sequence number that does not match the state => do nothing
-    #   (B) data is not corrupt and seq number matches state => stop the timer
+    if (self.sender_waiting_for == config.MSG_TYPE_ACK):
+      #(A) data is corrupt or has sequence number that does not match the state => do nothing
+      if(is_corrupt(msg) or not(get_seq_num(msg) == self.sender_seq_num)):
+        pass
+      #(B) data is not corrupt and seq number matches state => stop the timer
+      else:
+        self.timer.cancel()
+        self.sender_seq_num = not(self.sender_seq_num) # flip the state
+        self.sender_waiting_for = config.MSG_TYPE_DATA # you should always be waiting for DATA when you get here
+
 
     # TODO: if the packet received is DATA, this regards the receiver
     # CASE1: data is corrupt or has seq number that does not match state => resend last packet sent (ACK)
+    if(is_corrupt(msg) or not(get_seq_num(msg) == self.receiver_seq_num)):
+      self.network_layer.send(self.receiver_last_pkt)
     # CASE2: data is not corrupt and matches seq number =>
-    #   - extract the data from the packet
-    #   - deliver the data to the application (by calling msg_handler)
-    #   - create an ACK packet with the current state as the sequence number
-    #   - send the ACK packet to the network layer (udt_send)
-    # CASE2:
-    # CASE4: In state 0, waiting for call from above => do nothing
-
-
-    self.msg_handler(msg)
-    pass
-
+    else:
+      #extract the data from the packet
+      data = util.extract_data(msg)
+      #deliver the data to the application (by calling msg_handler)
+      self.msg_handler(data)
+      #create an ACK packet with the current state as the sequence number
+      ack_pkt = util.make_packet("", config.MSG_TYPE_ACK, self.receiver_seq_num)
+      #send the ACK packet to the network layer (udt_send)
+      self.network_layer.send(ack_pkt)
+      self.receiver_last_pkt = ack_pkt
 
   # Cleanup resources.
   def shutdown(self):
-    # TODO: cleanup anything else you may have when implementing this
-    # class.
+    # TODO: cleanup anything else you may have when implementing this class.
+    # TODO: cleanup locks, timers, stored last packets
     self.network_layer.shutdown()
 
 
-  def timeout(self):
-    # TODO: implement this function
-    # TODO: this function needs to be called when the timer times out
-    # State 1: means you are waiting for Ack 1. Send DATA1 again
-    # State 0: means you are waiting for Ack 0. Send DATA0 again
-    # Call udt_send(last_packet_sent)
-    # start_timer
+  def _timeout(self):
+    # TODO: implement this function. only ever timeout when waiting for ACK in sender state
+    self.network_layer.send(self.sender_last_pkt)
+    self.timer = Timer(config.TIMEOUT_MSEC, self._timeout())
+    self.timer.start()
     return
-
-
-  def make_packet(self, msg, type):
-    # TODO: test that this does what its supposed to do. tests?
-    bytelist = []
-    # HEADER 1: MESSAGE TYPE # TODO: remove the assert statements once im sure this works
-    bytelist.append(struct.pack('H', type)[0])
-    assert len(bytelist) == 2
-
-    # HEADER 2: SEQUENCE NUMBER
-    bytelist.append(struct.pack('H', self.sequence_num)[0])
-    assert len(bytelist) == 4
-
-    # HEADER 3: CHECKSUM
-    checksum = util.get_checksum(msg) # TODO: need to get checksum for headers & message
-    bytelist.append(struct.pack('H', checksum)[0])
-    assert len(bytelist) == 6
-
-    # TODO: is this in bytes? need to make sure appending the correct form for the data
-    bytelist.append(msg)
-    return b''.join(bytelist)
 
 
 
