@@ -11,7 +11,7 @@ def add_16_bit_nums(n1,n2):
   if res.bit_length() <= 16: return res
   return (res + 1) % MAX # wrap the carry when necessary
 
-
+# TODO: Assert that this function works as expected
 def get_checksum(pkt):
   checksum = 0
   bytes = pkt.encode()
