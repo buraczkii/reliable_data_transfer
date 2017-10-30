@@ -1,6 +1,7 @@
 # Usage: python demo_sender.py [dummy|ss|gbn]
 import config
 import sys
+import time
 import util
 
 
@@ -11,6 +12,7 @@ if __name__ == '__main__':
 
   transport_layer = None
   name = sys.argv[1]
+  start_time = time.time()
   try:
     transport_layer = util.get_transport_layer_by_name(
         name, config.SENDER_LISTEN_PORT,
@@ -23,3 +25,5 @@ if __name__ == '__main__':
   finally:
     if transport_layer:
       transport_layer.shutdown()
+    end_time = time.time()
+    print('Time used [secs]:', end_time - start_time)

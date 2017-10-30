@@ -66,7 +66,7 @@ def pkt_to_string(pkt):
   if(pkt.payload):
     payload = ", payload: " + str(pkt.payload)[:20]
     if len(pkt.payload) > 10: payload += "..."
-  return "PACKET [" + type + ", " + seq_num + payload + "]"
+  return " [" + type + ", " + seq_num + payload + "]"
 
 
 def get_transport_layer_by_name(name, local_port, remote_port, msg_handler):

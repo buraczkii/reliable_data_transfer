@@ -9,6 +9,7 @@ class StopAndWait:
 
   # "msg_handler" is used to deliver messages to application layer
   def __init__(self, local_port, remote_port, msg_handler):
+    util.log("Starting up `Stop and Wait` protocol ... ")
     self.network_layer = udt.NetworkLayer(local_port, remote_port, self)
     self.msg_handler = msg_handler
     self.sequence_number = 0
@@ -35,7 +36,8 @@ class StopAndWait:
   # Helper fn for thread to handle waiting for ACK before sending next piece of data
   def send_helper(self ,msg):
     while self.sender_state == config.WAIT_FOR_ACK_MSG:
-      pass
+      # sleep here so less busy waiting.
+      time.sleep(0.01)
     packet = util.make_packet(msg, config.MSG_TYPE_DATA, self.sequence_number)
     packet_data = util.extract_data(packet)
     self.sender_lock.acquire()
@@ -92,7 +94,7 @@ class StopAndWait:
 
   # Cleanup resources.
   def shutdown(self):
-    self._wait_for_last_ACK()
+    if not self.is_receiver: self._wait_for_last_ACK()
     if self.timer.is_alive(): self.timer.cancel()
     util.log("Connection shutting down...")
     self.network_layer.shutdown()
