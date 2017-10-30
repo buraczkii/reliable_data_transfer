@@ -62,12 +62,10 @@ def extract_data(msg):
 def pkt_to_string(pkt):
   type = "type: " + ("ACK" if pkt.msg_type == 2 else "DATA")
   seq_num = "seq#: " + str(pkt.seq_num)
-
   payload = ""
   if(pkt.payload):
     payload = ", payload: " + str(pkt.payload)[:20]
     if len(pkt.payload) > 10: payload += "..."
-
   return "PACKET [" + type + ", " + seq_num + payload + "]"
 
 

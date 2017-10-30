@@ -1,12 +1,13 @@
 import config
-import udt
-import util
 import threading
 import time
+import udt
+import util
 
 # Stop-And-Wait reliable transport protocol.
 class StopAndWait:
 
+  # "msg_handler" is used to deliver messages to application layer
   def __init__(self, local_port, remote_port, msg_handler):
     self.network_layer = udt.NetworkLayer(local_port, remote_port, self)
     self.msg_handler = msg_handler
