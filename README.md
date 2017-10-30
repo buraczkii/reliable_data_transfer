@@ -1,14 +1,6 @@
 ## Reliable Data Transfer : 'Stop and go' and 'Go back N' protocols
 #### Susanna Edens | October 30, 2017
 
-
-##### Playing around with network layer parameters:
-- error rate probability
-- packet loss probability
-- RTT
-- How is protocol affected?
-
-
 ##### `STOP AND GO` Protocol
 THE ALGORITHM: the sender and receiver are both sending one message at a time. The sender sends a piece of data and waits for an acknowledgement from the receiver that the data was received successfully before sending the next piece of data.
 
@@ -41,12 +33,32 @@ In a world where the underlying network has reliable data transfer properties, t
 
 
 ##### `GO BACK N` Protocol
-- the alg
-- how implemented
-- pros/cons
+THE ALGORITHM: the sender has a sliding window buffer where N is both the number of packets that it can hold in its buffer and the number of data packets (more specifically, sequence numbers) that can be in-flight from the sender. The receiver expects packets to come in order and not corrupted. If so, it will send ACKs for each successful message. If not, it sends ACKs for the last successfully received message. If the sender times out, it will send all of the packets that are in its sliding window.
 
-- how does it handle timeout? duplicate data/ack? corrupted data?
-- under what network behaviour/status would you choose this protocol over the other
+Both the sender and receiver code are contained within the `gbn.py` file. The same assumptions about data made in **STOP AND GO** were made here.
+
+What happens when packets aren't received as expected?
+
+**Special cases for the receiver**
+  1. _Packet received is corrupt:_ When the packet received is corrupt, we cannot reliably say anything about its contents. Resend the last ACK sent, indicating the sequence number of the last DATA packet that was received successfully. If an ACK has not yet been sent, do nothing and wait for server to time out.
+  1. _Packet received is out of order/does not match the expected sequence number:_  This could mean the packet is a duplicate or the packet that was expected was either corrupt or dropped, resulting in a stream of packets that are out of order. Resend the last ACK and wait for the server to timeout and resend the messages.
+
+**Special cases for the sender**
+  1. _ACK received is corrupt:_ Do nothing. The timer will eventually go off, resending the messages that have not yet been ACK-ed.
+  1. _Timeout:_ When there is a timeout, this indicates that the sender did not receive ACKs for some number of messages in the current window. It resends all of those messages and restarts the timer.
+  1. _Multithreaded `Send` calls_: I spawned a thread to handle sending app data. It waits to grab the lock, sends the data, and restarts the timer if the base is equal to the next sequence number (indicating messages in-flight). Lastly, it increments the `next_sequence_number`.
+  1. _Waiting for the last ack:_ If the sender finishes sending its messages, there can be up to N messages still in flight without corresponding ACKs. For this reason, before the sender gets to shutdown, it will wait until its `base_number` has caught up with its `next_sequence_number`, indicating those messages have been ACK-ed.
+  1. _No space in the window for more data:_ When a call comes from above wishing to send more data, if there is no room in the window, the sender will reject the data by returning False, indicating that the app should try again to send the same data. `gbn` sleeps for 1 second before returning false, just to give a little time for the possibility of window space becoming available next call.
+
+
+**Advantages**
+- Under good network conditions (low propagation delay), GBN can take better advantage of throughput by sending multiple messages without having to wait for ACKs. This would help in cases of large files.
+- A given ACK can acknowledge multiple frames since the sequence number in an ACK indicates that all packets until that sequence number have been received successfully.
+
+**Disadvantages**
+- Depending on the window size, the buffer may take up a lot of space.
+- Depending on the window size, corrupted packets may result in a large amount of duplicate messages sent. For example, if the window size is 100 and the sender sends 100 windows and all of them are received without error _except the first_, all of the packets will be resent.
+- If the network is not the most stable or RTT is high, this protocol will flood the channels with duplicate messages due to timeout. Every time the server times out, it will resend all of the messages in its window. If the timeout is too fast, the receiver may have already sent ACKS for all of the messages but did not reach the sender in time. If the RTT is too high compared to the timeout, its possible that the receiver may still be processing the messages while the sender sends a duplicate batch.
 
 
 ##### Calculating the checksum
@@ -60,3 +72,12 @@ I chose to implement the checksum algorithm the way its implemented in actual pr
 When calculating the checksum for a newly created packet, the value for the checksum was 0. The ones complement of the checksum is then put into the checksum field. Upon packet arrival, take the checksum and if the checksum is 0, you can be relatively sure that no bit corruption occurred. You can only be relatively sure because reordering 16-bit chunks in your message can result in the same checksum if you split the chunks the same way. However, in a network where no malicious activity is assumed, bit corruption will typically be random and will be caught by using the checksum.
 
 [Checksum reference](http://www.roman10.net/2011/11/27/how-to-calculate-iptcpudp-checksumpart-1-theory/)
+
+
+##### Playing around with network layer parameters:
+
+
+- error rate probability
+- packet loss probability
+- RTT
+- How is protocol affected?
