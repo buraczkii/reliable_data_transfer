@@ -69,7 +69,7 @@ class GoBackN:
           util.log("Packet received is corrupted. " + self.NO_PREV_ACK_MSG)
           return
         self.network_layer.send(self.receiver_last_ack)
-        util.log("Received corrupt data. Resending ACK: "
+        util.log("Received corrupted data. Resending ACK: "
                  + util.pkt_to_string(util.extract_data(self.receiver_last_ack)))
       return
 

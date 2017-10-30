@@ -79,13 +79,13 @@ When calculating the checksum for a newly created packet, the value for the chec
     values (BIT_ERROR_PROB, MSG_LOST_PROB, RTT)
 ```
 
-How are the protocols affected by different network conditions? (using `demo_receiver` and `_sender`)
+How are the protocols affected by different network conditions? (using `demo_receiver` and `_sender`). I ran the demo for each set of network parameters for each protocol 3 times. I averaged the time from those 3 data points. I took the sample of the median time to calculate how many messages were sent and how many timeouts occurred.
 
 
-|                                   | Stop and Wait | Go Back N  |
-| -------------                     |:-------------:|:-----|
-| Perfect Network (0, 0, 20ms)      | right-aligned | $1600 |
-| Standard (0.1, 0.1, 100ms)        | centered      |   $12 |
-| High corruption (0.5, 0.1, 100ms) | are neat      |    $1 |
-| High drop rate (0.1, 0.5, 100ms)  | centered      |   $12 |
-| High RTT (0.1, 0.1, 150)          | are neat      |    $1 |
+|                                   | Stop and Wait     | Go Back N         |
+| -------------                     |:-------------:    |:-----             |
+| Fake Network (0.01, 0.01, 100ms)  | Avg(3.17s) 21msgs | Avg(2.22s) 26msgs |
+| Standard (0.1, 0.1, 100ms)        | Avg(5.2s) 29msgs  | Avg(4.8s) 98msgs |
+| High corruption (0.3, 0.1, 100ms) | Avg(7.96s) 40msgs | Avg(5.19s) 104msgs |
+| High drop rate (0.1, 0.3, 100ms)  | Avg(7.1s) 87msgs | Avg(7.99s) 159msgs |
+| Higher RTT (0.1, 0.1, 150)          | Avg(6s) 28msgs | Avg(6.44s) 85msgs |
