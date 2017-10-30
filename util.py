@@ -65,7 +65,7 @@ def pkt_to_string(pkt):
   payload = ""
   if(pkt.payload):
     payload = ", payload: " + str(pkt.payload)[:20]
-    if len(pkt.payload) > 10: payload += "..."
+    if len(pkt.payload) > 20: payload += "..."
   return " [" + type + ", " + seq_num + payload + "]"
 
 
