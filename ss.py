@@ -18,13 +18,13 @@ class StopAndWait:
     # threading.Thread(target=self._packet_reader).start() # from udt class
 
     # TODO: SENDER: keep track of seq# (0 or 1) && last packet sent && if waiting for call from above or for ACK
-    self.sender_seq_num = 0 # this also represents part of the state
-    self.sender_last_pkt = ""
-    self.sender_waiting_for = config.MSG_TYPE_ACK # this may be converted into a lock
+    self.sender_seq_num = 0
+    self.sender_last_pkt = None
+    self.sender_waiting_state = config.WAITING_FOR_APP_DATA # this may be converted into a lock
 
     # TODO: RECEIVER: keep track of state (0 or 1) && store the last packet sent
     self.receiver_seq_num = 0
-    self.receiver_last_pkt = ""
+    self.receiver_last_pkt = None
 
   # "send" is called by application. Return true on success, false otherwise.
   def send(self, msg):
@@ -35,47 +35,36 @@ class StopAndWait:
     packet = util.make_packet(msg, config.MSG_TYPE_DATA, self.sender_seq_num)
     self.network_layer.send(packet)
     self.sender_last_pkt = packet # store the last packet sent
-    self.sender_waiting_for = config.MSG_TYPE_ACK
+    self.sender_waiting_state = config.WAITING_FOR_ACK_MSG
     self.timer.start()
 
 
-  # "handler" to be called by network layer when packet is ready.
-  # from BELOW
+  # "handler" to be called by network layer when packet is ready. from BELOW
   def handle_arrival_msg(self):
     msg = self.network_layer.recv()
     msg_data = util.extract_data(msg)
 
-    # TODO: if the packet received is ACK, this regards the sender
-    # CASE1: waiting for call from above => do nothing (either state 0 or 1)
-    if(self.sender_waiting_for == config.MSG_TYPE_DATA):
-      pass
-    # CASE2: waiting for ack:
-    if (self.sender_waiting_for == config.MSG_TYPE_ACK):
-      #(A) data is corrupt or has sequence number that does not match the state => do nothing
-      if(is_corrupt(msg) or not(get_seq_num(msg) == self.sender_seq_num)):
-        pass
-      #(B) data is not corrupt and seq number matches state => stop the timer
-      else:
+    if(msg_data.is_corrupt):
+      return
+
+    # If ACK message, assume its for sender
+    if msg_data.msg_type == config.MSG_TYPE_ACK:
+      if self.sender_waiting_state == config.WAITING_FOR_ACK_MSG and msg_data.seq_num == self.sender_seq_num:
         self.timer.cancel()
-        self.sender_seq_num = not(self.sender_seq_num) # flip the state
-        self.sender_waiting_for = config.MSG_TYPE_DATA # you should always be waiting for DATA when you get here
+        self.sender_seq_num = not (self.sender_seq_num)  # flip the sequence number
+        self.sender_waiting_state = config.WAITING_FOR_APP_DATA
+      return
 
+    # If DATA message, assume its for receiver
+    if msg_data.msg_type == config.MSG_TYPE_DATA:
+      if msg_data.seq_num == self.receiver_seq_num:
+        self.msg_handler(msg_data.payload)
+        ack_pkt = util.make_packet("", config.MSG_TYPE_ACK, self.receiver_seq_num)
+        self.network_layer.send(ack_pkt)
+        self.receiver_last_pkt = ack_pkt
+      else:
+        self.network_layer.send(self.receiver_last_pkt) # resend last packet
 
-    # TODO: if the packet received is DATA, this regards the receiver
-    # CASE1: data is corrupt or has seq number that does not match state => resend last packet sent (ACK)
-    if(is_corrupt(msg) or not(get_seq_num(msg) == self.receiver_seq_num)):
-      self.network_layer.send(self.receiver_last_pkt)
-    # CASE2: data is not corrupt and matches seq number =>
-    else:
-      #extract the data from the packet
-      data = util.extract_data(msg)
-      #deliver the data to the application (by calling msg_handler)
-      self.msg_handler(data)
-      #create an ACK packet with the current state as the sequence number
-      ack_pkt = util.make_packet("", config.MSG_TYPE_ACK, self.receiver_seq_num)
-      #send the ACK packet to the network layer (udt_send)
-      self.network_layer.send(ack_pkt)
-      self.receiver_last_pkt = ack_pkt
 
   # Cleanup resources.
   def shutdown(self):

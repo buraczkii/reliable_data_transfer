@@ -19,3 +19,7 @@ MAX_MESSAGE_SIZE = 500
 # Message types used in transport layer.
 MSG_TYPE_DATA = 1
 MSG_TYPE_ACK = 2
+
+# Waiting states for the sender in stop&wait
+WAITING_FOR_APP_DATA = 1
+WAITING_FOR_ACK_MSG = 2
