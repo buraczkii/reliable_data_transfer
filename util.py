@@ -6,9 +6,9 @@ import time
 
 SIXTEEN_BIT_MASK = 0xffff
 
-# A class to wrap various pieces of information included in a data packet which includes the
-# type of message (ACK or DATA), the sequence number, the checksum value, and the payload. In
-# addition, it contains a boolean flag indicating bit corruption.
+# A class to wrap various pieces of information included in a transport layer segment which includes
+#  the type of message (ACK or DATA), the sequence number, the checksum value, and the payload. In
+# addition, it contains a boolean flag indicating the presence of data corruption.
 class RDTPacket:
   def __init__(self, msg_type, seq_num, checksum, payload, is_corrupt):
     self.msg_type = msg_type
@@ -59,6 +59,13 @@ def extract_data(msg):
   return RDTPacket(headers[0], headers[1], headers[2], msg[6:], False)
 
 
+def pkt_to_string(pkt):
+  type = "type: " + ("ACK" if pkt.msg_type == 2 else "DATA")
+  seq_num = "seq#: " + str(pkt.seq_num)
+  payload = ", payload: " + str(pkt.payload) if pkt.payload else ""
+  return "PACKET [" + type + ", " + seq_num + payload + "]"
+
+
 def get_transport_layer_by_name(name, local_port, remote_port, msg_handler):
   assert name == 'dummy' or name == 'ss' or name == 'gbn'
   if name == 'dummy':
@@ -68,12 +75,10 @@ def get_transport_layer_by_name(name, local_port, remote_port, msg_handler):
   if name == 'gbn':
     return gbn.GoBackN(local_port, remote_port, msg_handler)
 
-# Current time on the server.
+
 def now():
-  return time.strftime("%a %m-%d-%y %H:%M:%S")
+  return time.strftime("[%a %m-%d-%y %H:%M:%S] ")
 
-def sender_log_header():
-  return str(now() + " Sender: ")
 
-def receiver_log_header():
-  return str(now() + " Receiver: ")
+def log(msg):
+  print(now() + msg)
