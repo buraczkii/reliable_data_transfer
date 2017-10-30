@@ -26,7 +26,7 @@ class StopAndWait:
   # "send" is called by application. Return true on success, false otherwise.
   def send(self, msg):
     self.is_receiver = False
-    util.log("Called by app to send following message: <" + str(msg) + ">")
+    util.log("Called by app to send following message: <" + str(msg)[:20] + "...>")
     threading.Thread(target=self.send_helper(msg))
     return True
 

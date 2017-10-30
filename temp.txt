@@ -43,7 +43,17 @@ determining that it was in fact Public Domain and finding Raben
 to verify this and get his permission.  Interested enough, in a
 totally unrelated action to our searches for him, the professor
 subscribed to the Project Gutenberg listserver and we happened,
-by accident, to notice his name. (We don't really ccepted standard for so many computer margins), and the entire
+by accident, to notice his name. (We don't really look at every
+subscription request as the computers usually handle them.) The
+etext was then properly identified, copyright analyzed, and the
+current edition prepared.
+
+To give you an estimation of the difference in the original and
+what we have today:  the original was probably entered on cards
+commonly known at the time as "IBM cards" (Do Not Fold, Spindle
+or Mutilate) and probably took in excess of 100,000 of them.  A
+single card could hold 80 characters (hence 80 characters is an
+accepted standard for so many computer margins), and the entire
 original edition we received in all caps was over 800,000 chars
 in length, including line enumeration, symbols for caps and the
 punctuation marks, etc., since they were not available keyboard
@@ -75,7 +85,18 @@ Sing, Heavenly Muse, that, on the secret top
 Of Oreb, or of Sinai, didst inspire
 That shepherd who first taught the chosen seed
 In the beginning how the heavens and earth
-Rose out of Chon the vast Abyss,
+Rose out of Chaos: or, if Sion hill
+Delight thee more, and Siloa's brook that flowed
+Fast by the oracle of God, I thence
+Invoke thy aid to my adventurous song,
+That with no middle flight intends to soar
+Above th' Aonian mount, while it pursues
+Things unattempted yet in prose or rhyme.
+And chiefly thou, O Spirit, that dost prefer
+Before all temples th' upright heart and pure,
+Instruct me, for thou know'st; thou from the first
+Wast present, and, with mighty wings outspread,
+Dove-like sat'st brooding on the vast Abyss,
 And mad'st it pregnant: what in me is dark
 Illumine, what is low raise and support;
 That, to the height of this great argument,
@@ -86,7 +107,19 @@ Nor the deep tract of Hell--say first what cause
 Moved our grand parents, in that happy state,
 Favoured of Heaven so highly, to fall off
 From their Creator, and transgress his will
-For one restraint, lords of the World bain attempt.  Him the Almighty Power
+For one restraint, lords of the World besides.
+Who first seduced them to that foul revolt?
+  Th' infernal Serpent; he it was whose guile,
+Stirred up with envy and revenge, deceived
+The mother of mankind, what time his pride
+Had cast him out from Heaven, with all his host
+Of rebel Angels, by whose aid, aspiring
+To set himself in glory above his peers,
+He trusted to have equalled the Most High,
+If he opposed, and with ambitious aim
+Against the throne and monarchy of God,
+Raised impious war in Heaven and battle proud,
+With vain attempt.  Him the Almighty Power
 Hurled headlong flaming from th' ethereal sky,
 With hideous ruin and combustion, down
 To bottomless perdition, there to dwell
@@ -203,7 +236,8 @@ To undergo eternal punishment?"
 Doing or suffering: but of this be sure--
 To do aught good never will be our task,
 But ever to do ill our sole delight,
-As being the contrary to his high willWhom we resist.  If then his providence
+As being the contrary to his high will
+Whom we resist.  If then his providence
 Out of our evil seek to bring forth good,
 Our labour must be to pervert that end,
 And out of good still to find means of evil;
@@ -232,7 +266,19 @@ Consult how we may henceforth most offend
 Our enemy, our own loss how repair,
 How overcome this dire calamity,
 What reinforcement we may gain from hope,
-If not, what resolution from despair.n the Norway foam,
+If not, what resolution from despair."
+  Thus Satan, talking to his nearest mate,
+With head uplift above the wave, and eyes
+That sparkling blazed; his other parts besides
+Prone on the flood, extended long and large,
+Lay floating many a rood, in bulk as huge
+As whom the fables name of monstrous size,
+Titanian or Earth-born, that warred on Jove,
+Briareos or Typhon, whom the den
+By ancient Tarsus held, or that sea-beast
+Leviathan, which God of all his works
+Created hugest that swim th' ocean-stream.
+Him, haply slumbering on the Norway foam,
 The pilot of some small night-foundered skiff,
 Deeming some island, oft, as seamen tell,
 With fixed anchor in his scaly rind,
@@ -319,7 +365,7 @@ Behind him cast.  The broad circumference
 Hung on his shoulders like the moon, whose orb
 Through optic glass the Tuscan artist views
 At evening, from the top of Fesole,
-Or in aldarno, to descry new lands,
+Or in Valdarno, to descry new lands,
 Rivers, or mountains, in her spotty globe.
 His spear--to equal which the tallest pine
 Hewn on Norwegian hills, to be the mast
@@ -355,7 +401,18 @@ Or in this abject posture have ye sworn
 To adore the Conqueror, who now beholds
 Cherub and Seraph rolling in the flood
 With scattered arms and ensigns, till anon
-His swift pursuers from they soon obeyed
+His swift pursuers from Heaven-gates discern
+Th' advantage, and, descending, tread us down
+Thus drooping, or with linked thunderbolts
+Transfix us to the bottom of this gulf?
+Awake, arise, or be for ever fallen!"
+  They heard, and were abashed, and up they sprung
+Upon the wing, as when men wont to watch
+On duty, sleeping found by whom they dread,
+Rouse and bestir themselves ere well awake.
+Nor did they not perceive the evil plight
+In which they were, or the fierce pains not feel;
+Yet to their General's voice they soon obeyed
 Innumerable.  As when the potent rod
 Of Amram's son, in Egypt's evil day,
 Waved round the coast, up-called a pitchy cloud
@@ -400,7 +457,18 @@ At their great Emperor's call, as next in worth
 Came singly where he stood on the bare strand,
 While the promiscuous crowd stood yet aloof?
   The chief were those who, from the pit of Hell
-Roaming to seek their rs;
+Roaming to seek their prey on Earth, durst fix
+Their seats, long after, next the seat of God,
+Their altars by his altar, gods adored
+Among the nations round, and durst abide
+Jehovah thundering out of Sion, throned
+Between the Cherubim; yea, often placed
+Within his sanctuary itself their shrines,
+Abominations; and with cursed things
+His holy rites and solemn feasts profaned,
+And with their darkness durst affront his light.
+First, Moloch, horrid king, besmeared with blood
+Of human sacrifice, and parents' tears;
 Though, for the noise of drums and timbrels loud,
 Their children's cries unheard that passed through fire
 To his grim idol.  Him the Ammonite
@@ -435,7 +503,7 @@ Can either sex assume, or both; so soft
 And uncompounded is their essence pure,
 Not tried or manacled with joint or limb,
 Nor founded on the brittle strength of bones,
-Like cumbrous flesh; but,in what shape they choose,
+Like cumbrous flesh; but, in what shape they choose,
 Dilated or condensed, bright or obscure,
 Can execute their airy purposes,
 And works of love or enmity fulfil.
@@ -476,7 +544,7 @@ Of Palestine, in Gath and Ascalon,
 And Accaron and Gaza's frontier bounds.
 Him followed Rimmon, whose delightful seat
 Was fair Damascus, on the fertile banks
-Of Abbana and Pharphar, luid streams.
+Of Abbana and Pharphar, lucid streams.
 He also against the house of God was bold:
 A leper once he lost, and gained a king--
 Ahaz, his sottish conqueror, whom he drew
@@ -595,7 +663,18 @@ Damasco, or Marocco, or Trebisond,
 Or whom Biserta sent from Afric shore
 When Charlemain with all his peerage fell
 By Fontarabbia.  Thus far these beyond
-Compare of mortal prowee
+Compare of mortal prowess, yet observed
+Their dread Commander.  He, above the rest
+In shape and gesture proudly eminent,
+Stood like a tower.  His form had yet not lost
+All her original brightness, nor appeared
+Less than Archangel ruined, and th' excess
+Of glory obscured: as when the sun new-risen
+Looks through the horizontal misty air
+Shorn of his beams, or, from behind the moon,
+In dim eclipse, disastrous twilight sheds
+On half the nations, and with fear of change
+Perplexes monarchs.  Darkened so, yet shone
 Above them all th' Archangel: but his face
 Deep scars of thunder had intrenched, and care
 Sat on his faded cheek, but under brows
@@ -607,7 +686,7 @@ The fellows of his crime, the followers rather
 For ever now to have their lot in pain--
 Millions of Spirits for his fault amerced
 Of Heaven, and from eternal splendours flung
-or his revolt--yet faithful how they stood,
+For his revolt--yet faithful how they stood,
 Their glory withered; as, when heaven's fire
 Hath scathed the forest oaks or mountain pines,
 With singed top their stately growth, though bare,
@@ -655,7 +734,7 @@ Thither, if but to pry, shall be perhaps
 Our first eruption--thither, or elsewhere;
 For this infernal pit shall never hold
 Celestial Spirits in bondage, nor th' Abyss
-Long under darknes cover.  But these thoughts
+Long under darkness cover.  But these thoughts
 Full counsel must mature.  Peace is despaired;
 For who can think submission? War, then, war
 Open or understood, must be resolved."
@@ -719,7 +798,7 @@ Equalled in all their glories, to enshrine
 Belus or Serapis their gods, or seat
 Their kings, when Egypt with Assyria strove
 In wealth and luxury.  Th' ascending pile
-Stood fixed her stately height, and straightthe doors,
+Stood fixed her stately height, and straight the doors,
 Opening their brazen folds, discover, wide
 Within, her ample spaces o'er the smooth
 And level pavement: from the arched roof,
@@ -736,12 +815,24 @@ Exalted to such power, and gave to rule,
 Each in his Hierarchy, the Orders bright.
 Nor was his name unheard or unadored
 In ancient Greece; and in Ausonian land
-Men called him Mulciber;and how he fell
+Men called him Mulciber; and how he fell
 From Heaven they fabled, thrown by angry Jove
 Sheer o'er the crystal battlements: from morn
 To noon he fell, from noon to dewy eve,
 A summer's day, and with the setting sun
-Dropt from the zenith, like a falling star, and his peers.  Their summons called
+Dropt from the zenith, like a falling star,
+On Lemnos, th' Aegaean isle.  Thus they relate,
+Erring; for he with this rebellious rout
+Fell long before; nor aught availed him now
+To have built in Heaven high towers; nor did he scape
+By all his engines, but was headlong sent,
+With his industrious crew, to build in Hell.
+  Meanwhile the winged Heralds, by command
+Of sovereign power, with awful ceremony
+And trumpet's sound, throughout the host proclaim
+A solemn council forthwith to be held
+At Pandemonium, the high capital
+Of Satan and his peers.  Their summons called
 From every band and squared regiment
 By place or choice the worthiest: they anon
 With hundreds and with thousands trooping came
@@ -755,7 +846,7 @@ Thick swarmed, both on the ground and in the air,
 Brushed with the hiss of rustling wings.  As bees
 In spring-time, when the Sun with Taurus rides.
 Pour forth their populous youth about the hive
-In clusters; they among fresh ews and flowers
+In clusters; they among fresh dews and flowers
 Fly to and fro, or on the smoothed plank,
 The suburb of their straw-built citadel,
 New rubbed with balm, expatiate, and confer
@@ -779,7 +870,7 @@ Though without number still, amidst the hall
 Of that infernal court.  But far within,
 And in their own dimensions like themselves,
 The great Seraphic Lords and Cherubim
-In close recess and secret conclave sat
+In close recess and secret conclave sat,
 A thousand demi-gods on golden seats,
 Frequent and full.  After short silence then,
 And summons read, the great consult began.
@@ -828,7 +919,7 @@ To union, and firm faith, and firm accord,
 More than can be in Heaven, we now return
 To claim our just inheritance of old,
 Surer to prosper than prosperity
-Could have asured us; and by what best way,
+Could have assured us; and by what best way,
 Whether of open war or covert guile,
 We now debate.  Who can advise may speak."
   He ceased; and next him Moloch, sceptred king,
@@ -873,7 +964,7 @@ We sunk thus low? Th' ascent is easy, then;
 Th' event is feared! Should we again provoke
 Our stronger, some worse way his wrath may find
 To our destruction, if there be in Hell
-Fer to be worse destroyed! What can be worse
+Fear to be worse destroyed! What can be worse
 Than to dwell here, driven out from bliss, condemned
 In this abhorred deep to utter woe!
 Where pain of unextinguishable fire
@@ -951,7 +1042,17 @@ To punish endless? "Wherefore cease we, then?"
 Say they who counsel war; "we are decreed,
 Reserved, and destined to eternal woe;
 Whatever doing, what can we suffer more,
-What can we s
+What can we suffer worse?" Is this, then, worst--
+Thus sitting, thus consulting, thus in arms?
+What when we fled amain, pursued and struck
+With Heaven's afflicting thunder, and besought
+The Deep to shelter us? This Hell then seemed
+A refuge from those wounds.  Or when we lay
+Chained on the burning lake? That sure was worse.
+What if the breath that kindled those grim fires,
+Awaked, should blow them into sevenfold rage,
+And plunge us in the flames; or from above
+Should intermitted vengeance arm again
 His red right hand to plague us? What if all
 Her stores were opened, and this firmament
 Of Hell should spout her cataracts of fire,
@@ -1025,7 +1126,7 @@ Forced hallelujahs, while he lordly sits
 Our envied sovereign, and his altar breathes
 Ambrosial odours and ambrosial flowers,
 Our servile offerings? This must be our task
-In Heaven, this ur delight.  How wearisome
+In Heaven, this our delight.  How wearisome
 Eternity so spent in worship paid
 To whom we hate! Let us not then pursue,
 By force impossible, by leave obtained
@@ -1075,12 +1176,24 @@ They dreaded worse than Hell; so much the fear
 Of thunder and the sword of Michael
 Wrought still within them; and no less desire
 To found this nether empire, which might rise,
-By policy and long proce, while thus he spake:--
+By policy and long process of time,
+In emulation opposite to Heaven.
+Which when Beelzebub perceived--than whom,
+Satan except, none higher sat--with grave
+Aspect he rose, and in his rising seemed
+A pillar of state.  Deep on his front engraven
+Deliberation sat, and public care;
+And princely counsel in his face yet shone,
+Majestic, though in ruin.  Sage he stood
+With Atlantean shoulders, fit to bear
+The weight of mightiest monarchies; his look
+Drew audience and attention still as night
+Or summer's noontide air, while thus he spake:--
   "Thrones and Imperial Powers, Offspring of Heaven,
 Ethereal Virtues! or these titles now
 Must we renounce, and, changing style, be called
 Princes of Hell? for so the popular vote
-Inclines--ere to continue, and build up here
+Inclines--here to continue, and build up here
 A growing empire; doubtless! while we dream,
 And know not that the King of Heaven hath doomed
 This place our dungeon, not our safe retreat
@@ -1109,7 +1222,18 @@ May reap his conquest, and may least rejoice
 In doing what we most in suffering feel?
 Nor will occasion want, nor shall we need
 With dangerous expedition to invade
-Heaven, whose high walls felearn
+Heaven, whose high walls fear no assault or siege,
+Or ambush from the Deep.  What if we find
+Some easier enterprise? There is a place
+(If ancient and prophetic fame in Heaven
+Err not)--another World, the happy seat
+Of some new race, called Man, about this time
+To be created like to us, though less
+In power and excellence, but favoured more
+Of him who rules above; so was his will
+Pronounced among the Gods, and by an oath
+That shook Heaven's whole circumference confirmed.
+Thither let us bend all our thoughts, to learn
 What creatures there inhabit, of what mould
 Or substance, how endued, and what their power
 And where their weakness: how attempted best,
@@ -1245,7 +1369,18 @@ Or close ambition varnished o'er with zeal.
 Ended, rejoicing in their matchless Chief:
 As, when from mountain-tops the dusky clouds
 Ascending, while the north wind sleeps, o'erspread
-Heaven's cheerful face, the l wars
+Heaven's cheerful face, the louring element
+Scowls o'er the darkened landscape snow or shower,
+If chance the radiant sun, with farewell sweet,
+Extend his evening beam, the fields revive,
+The birds their notes renew, and bleating herds
+Attest their joy, that hill and valley rings.
+O shame to men! Devil with devil damned
+Firm concord holds; men only disagree
+Of creatures rational, though under hope
+Of heavenly grace, and, God proclaiming peace,
+Yet live in hatred, enmity, and strife
+Among themselves, and levy cruel wars
 Wasting the earth, each other to destroy:
 As if (which might induce us to accord)
 Man had not hellish foes enow besides,
@@ -1297,7 +1432,7 @@ Their own heroic deeds, and hapless fall
 By doom of battle, and complain that Fate
 Free Virtue should enthrall to Force or Chance.
 Their song was partial; but the harmony
-(What could it less when Spirits immortal ing?)
+(What could it less when Spirits immortal sing?)
 Suspended Hell, and took with ravishment
 The thronging audience.  In discourse more sweet
 (For Eloquence the Soul, Song charms the Sense)
@@ -1313,7 +1448,30 @@ Vain wisdom all, and false philosophy!--
 Yet, with a pleasing sorcery, could charm
 Pain for a while or anguish, and excite
 Fallacious hope, or arm th' obdured breast
-With stubborn found as that Serbonian bog
+With stubborn patience as with triple steel.
+Another part, in squadrons and gross bands,
+On bold adventure to discover wide
+That dismal world, if any clime perhaps
+Might yield them easier habitation, bend
+Four ways their flying march, along the banks
+Of four infernal rivers, that disgorge
+Into the burning lake their baleful streams--
+Abhorred Styx, the flood of deadly hate;
+Sad Acheron of sorrow, black and deep;
+Cocytus, named of lamentation loud
+Heard on the rueful stream; fierce Phlegeton,
+Whose waves of torrent fire inflame with rage.
+Far off from these, a slow and silent stream,
+Lethe, the river of oblivion, rolls
+Her watery labyrinth, whereof who drinks
+Forthwith his former state and being forgets--
+Forgets both joy and grief, pleasure and pain.
+Beyond this flood a frozen continent
+Lies dark and wild, beat with perpetual storms
+Of whirlwind and dire hail, which on firm land
+Thaws not, but gathers heap, and ruin seems
+Of ancient pile; all else deep snow and ice,
+A gulf profound as that Serbonian bog
 Betwixt Damiata and Mount Casius old,
 Where armies whole have sunk: the parching air
 Burns frore, and cold performs th' effect of fire.
@@ -1390,7 +1548,18 @@ With Lapland witches, while the labouring moon
 Eclipses at their charms.  The other Shape--
 If shape it might be called that shape had none
 Distinguishable in member, joint, or limb;
-Or substance might be called that shadow seen:--
+Or substance might be called that shadow seemed,
+For each seemed either--black it stood as Night,
+Fierce as ten Furies, terrible as Hell,
+And shook a dreadful dart: what seemed his head
+The likeness of a kingly crown had on.
+Satan was now at hand, and from his seat
+The monster moving onward came as fast
+With horrid strides; Hell trembled as he strode.
+Th' undaunted Fiend what this might be admired--
+Admired, not feared (God and his Son except,
+Created thing naught valued he nor shunned),
+And with disdainful look thus first began:--
   "Whence and what art thou, execrable Shape,
 That dar'st, though grim and terrible, advance
 Thy miscreated front athwart my way
@@ -1401,11 +1570,22 @@ Hell-born, not to contend with Spirits of Heaven."
   To whom the Goblin, full of wrath, replied:--
 "Art thou that traitor Angel? art thou he,
 Who first broke peace in Heaven and faith, till then
-Unbroken, and in prog, or with one stroke of this dart
+Unbroken, and in proud rebellious arms
+Drew after him the third part of Heaven's sons,
+Conjured against the Highest--for which both thou
+And they, outcast from God, are here condemned
+To waste eternal days in woe and pain?
+And reckon'st thou thyself with Spirits of Heaven
+Hell-doomed, and breath'st defiance here and scorn,
+Where I reign king, and, to enrage thee more,
+Thy king and lord? Back to thy punishment,
+False fugitive; and to thy speed add wings,
+Lest with a whip of scorpions I pursue
+Thy lingering, or with one stroke of this dart
 Strange horror seize thee, and pangs unfelt before."
   So spake the grisly Terror, and in shape,
 So speaking and so threatening, grew tenfold,
-More dreadful and deform.  n th' other side,
+More dreadful and deform.  On th' other side,
 Incensed with indignation, Satan stood
 Unterrified, and like a comet burned,
 That fires the length of Ophiuchus huge
@@ -1465,7 +1645,7 @@ I pleased, and with attractive graces won
 The most averse--thee chiefly, who, full oft
 Thyself in me thy perfect image viewing,
 Becam'st enamoured; and such joy thou took'st
-Wit me in secret that my womb conceived
+With me in secret that my womb conceived
 A growing burden.  Meanwhile war arose,
 And fields were fought in Heaven: wherein remained
 (For what could else?) to our Almighty Foe
@@ -1523,6 +1703,17 @@ Then sweet, now sad to mention, through dire change
 Befallen us unforeseen, unthought-of--know,
 I come no enemy, but to set free
 From out this dark and dismal house of pain
+Both him and thee, and all the heavenly host
+Of Spirits that, in our just pretences armed,
+Fell with us from on high.  From them I go
+This uncouth errand sole, and one for all
+Myself expose, with lonely steps to tread
+Th' unfounded Deep, and through the void immense
+To search, with wandering quest, a place foretold
+Should be--and, by concurring signs, ere now
+Created vast and round--a place of bliss
+In the purlieus of Heaven; and therein placed
+A race of upstart creatures, to supply
 Perhaps our vacant room, though more removed,
 Lest Heaven, surcharged with potent multitude,
 Might hap to move new broils.  Be this, or aught
@@ -1703,6 +1894,17 @@ Our torments also may, in length of time,
 Become our elements, these piercing fires
 As soft as now severe, our temper changed
 Into their temper; which must needs remove
+The sensible of pain.  All things invite
+To peaceful counsels, and the settled state
+Of order, how in safety best we may
+Compose our present evils, with regard
+Of what we are and where, dismissing quite
+All thoughts of war.  Ye have what I advise."
+  He scarce had finished, when such murmur filled
+Th' assembly as when hollow rocks retain
+The sound of blustering winds, which all night long
+Had roused the sea, now with hoarse cadence lull
+Seafaring men o'erwatched, whose bark by chance
 Or pinnace, anchors in a craggy bay
 After the tempest.  Such applause was heard
 As Mammon ended, and his sentence pleased,
@@ -1760,7 +1962,18 @@ With dangerous expedition to invade
 Heaven, whose high walls fear no assault or siege,
 Or ambush from the Deep.  What if we find
 Some easier enterprise? There is a place
-(If ancient and pow attempted best,
+(If ancient and prophetic fame in Heaven
+Err not)--another World, the happy seat
+Of some new race, called Man, about this time
+To be created like to us, though less
+In power and excellence, but favoured more
+Of him who rules above; so was his will
+Pronounced among the Gods, and by an oath
+That shook Heaven's whole circumference confirmed.
+Thither let us bend all our thoughts, to learn
+What creatures there inhabit, of what mould
+Or substance, how endued, and what their power
+And where their weakness: how attempted best,
 By force of subtlety.  Though Heaven be shut,
 And Heaven's high Arbitrator sit secure
 In his own strength, this place may lie exposed,
@@ -1809,7 +2022,7 @@ Shall breathe her balm.  But, first, whom shall we send
 In search of this new World? whom shall we find
 Sufficient? who shall tempt with wandering feet
 The dark, unbottomed, infinite Abyss,
-And through th palpable obscure find out
+And through the palpable obscure find out
 His uncouth way, or spread his airy flight,
 Upborne with indefatigable wings
 Over the vast abrupt, ere he arrive
@@ -1952,7 +2165,18 @@ And Lichas from the top of Oeta threw
 Into th' Euboic sea.  Others, more mild,
 Retreated in a silent valley, sing
 With notes angelical to many a harp
-Their own heroill, foreknowledge absolute,
+Their own heroic deeds, and hapless fall
+By doom of battle, and complain that Fate
+Free Virtue should enthrall to Force or Chance.
+Their song was partial; but the harmony
+(What could it less when Spirits immortal sing?)
+Suspended Hell, and took with ravishment
+The thronging audience.  In discourse more sweet
+(For Eloquence the Soul, Song charms the Sense)
+Others apart sat on a hill retired,
+In thoughts more elevate, and reasoned high
+Of Providence, Foreknowledge, Will, and Fate--
+Fixed fate, free will, foreknowledge absolute,
 And found no end, in wandering mazes lost.
 Of good and evil much they argued then,
 Of happiness and final misery,
@@ -2020,7 +2244,18 @@ Where all life dies, death lives, and Nature breeds,
 Perverse, all monstrous, all prodigious things,
 Obominable, inutterable, and worse
 Than fables yet have feigned or fear conceived,
-Gorgons, and Hydras, and Chimeras bring
+Gorgons, and Hydras, and Chimeras dire.
+  Meanwhile the Adversary of God and Man,
+Satan, with thoughts inflamed of highest design,
+Puts on swift wings, and toward the gates of Hell
+Explores his solitary flight: sometimes
+He scours the right hand coast, sometimes the left;
+Now shaves with level wing the deep, then soars
+Up to the fiery concave towering high.
+As when far off at sea a fleet descried
+Hangs in the clouds, by equinoctial winds
+Close sailing from Bengala, or the isles
+Of Ternate and Tidore, whence merchants bring
 Their spicy drugs; they on the trading flood,
 Through the wide Ethiopian to the Cape,
 Ply stemming nightly toward the pole: so seemed
@@ -2096,7 +2331,29 @@ Shakes pestilence and war.  Each at the head
 Levelled his deadly aim; their fatal hands
 No second stroke intend; and such a frown
 Each cast at th' other as when two black clouds,
-With heaven's artillery fraught, came rattling ono strange
+With heaven's artillery fraught, came rattling on
+Over the Caspian,--then stand front to front
+Hovering a space, till winds the signal blow
+To join their dark encounter in mid-air.
+So frowned the mighty combatants that Hell
+Grew darker at their frown; so matched they stood;
+For never but once more was wither like
+To meet so great a foe.  And now great deeds
+Had been achieved, whereof all Hell had rung,
+Had not the snaky Sorceress, that sat
+Fast by Hell-gate and kept the fatal key,
+Risen, and with hideous outcry rushed between.
+  "O father, what intends thy hand," she cried,
+"Against thy only son? What fury, O son,
+Possesses thee to bend that mortal dart
+Against thy father's head? And know'st for whom?
+For him who sits above, and laughs the while
+At thee, ordained his drudge to execute
+Whate'er his wrath, which he calls justice, bids--
+His wrath, which one day will destroy ye both!"
+  She spake, and at her words the hellish Pest
+Forbore: then these to her Satan returned:--
+  "So strange thy outcry, and thy words so strange
 Thou interposest, that my sudden hand,
 Prevented, spares to tell thee yet by deeds
 What it intends, till first I know of thee
