@@ -35,7 +35,6 @@ class NetworkLayer:
     if random.random() < config.BIT_ERROR_PROB:
       msg = self._random_bit_error(msg)
     if random.random() < config.MSG_LOST_PROB:
-      print("dropping this packet")
       return
     time.sleep(config.RTT_MSEC / 2000.0)
     self.s.sendto(msg, ('localhost', self.remote_port))

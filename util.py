@@ -1,8 +1,8 @@
-import config
 import dummy
 import gbn
 import ss
 import struct
+import time
 
 SIXTEEN_BIT_MASK = 0xffff
 
@@ -19,7 +19,7 @@ class RDTPacket:
 
 
 def get_corrupt_packet_representation():
-  return RDTPacket(None, None, None, None, False)
+  return RDTPacket(None, None, None, None, True)
 
 
 ####################################################
@@ -41,19 +41,18 @@ def make_packet(msg, type, seq_num):
   bytelist.append(struct.pack('!H', type))     # HEADER 1: MESSAGE TYPE
   bytelist.append(struct.pack('!H', seq_num))  # HEADER 2: SEQUENCE NUMBER
   bytelist.append(struct.pack('!H', 0))        # HEADER 3: CHECKSUM (append 0 for now)
-  bytelist.append(msg.encode())                # The payload # TODO: will the message be given as string or bytes object?
+  bytelist.append(msg)                         # The payload
 
   checksum = get_checksum(b''.join(bytelist))
   checksum_bytes = struct.pack("!H", checksum)
   assert len(checksum_bytes) == 2
 
-  bytelist[2] = checksum_bytes   # substitute checksum field with calculated checksum
+  bytelist[2] = checksum_bytes
   packet = b''.join(bytelist)
   return packet
 
 
 def extract_data(msg):
-  # TODO: if it is corrupt, we shouldn't try to pull any data from it right?
   if len(msg) < 6 or not get_checksum(msg) == 0:
     return get_corrupt_packet_representation()
   headers = struct.unpack("!3H", msg[0:6])
@@ -69,19 +68,12 @@ def get_transport_layer_by_name(name, local_port, remote_port, msg_handler):
   if name == 'gbn':
     return gbn.GoBackN(local_port, remote_port, msg_handler)
 
+# Current time on the server.
+def now():
+  return time.strftime("%a %m-%d-%y %H:%M:%S")
 
+def sender_log_header():
+  return str(now() + " Sender: ")
 
-
-# packet = make_packet("this is my message", config.MSG_TYPE_DATA, 1)
-# print(packet)
-# data = extract_data(packet)
-# print(data.msg_type)
-# print(data.seq_num)
-# print(data.checksum)
-# print(data.payload)
-# print(data.is_corrupt)
-#
-# # s = '4500003044224000800600008c7c19acae241e2b'
-# # bs = bytearray.fromhex(s)
-# # c = get_checksum(bs)
-# # print(c)
+def receiver_log_header():
+  return str(now() + " Receiver: ")
