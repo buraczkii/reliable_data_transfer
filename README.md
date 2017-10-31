@@ -71,10 +71,10 @@ I chose to implement the checksum algorithm the way its implemented in actual pr
 
 When calculating the checksum for a newly created packet, the value for the checksum was 0. The ones complement of the checksum is then put into the checksum field. Upon packet arrival, take the checksum and if the checksum is 0, you can be relatively sure that no bit corruption occurred. You can only be relatively sure because reordering 16-bit chunks in your message can result in the same checksum if you split the chunks the same way. However, in a network where no malicious activity is assumed, bit corruption will typically be random and will be caught by using the checksum.
 
-[Checksum reference](http://www.roman10.net/2011/11/27/how-to-calculate-iptcpudp-checksumpart-1-theory/)
+([Checksum reference](http://www.roman10.net/2011/11/27/how-to-calculate-iptcpudp-checksumpart-1-theory/))
 
 
-#g## Playing around with network layer parameters:
+### Playing around with network layer parameters:
 ```bash
     values (BIT_ERROR_PROB, MSG_LOST_PROB, RTT)
 ```
