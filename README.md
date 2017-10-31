@@ -21,12 +21,12 @@ In a world where the underlying network has reliable data transfer properties, t
   1. _`Send` calls from above when waiting for ACKs:_ In order to handle this, I spawned a thread for each call made to `send()`. The thread waits for the sender state to switch to `WAIT_FOR_APP_DATA`, grabs the lock, sends the data, and restarts the timer.
   1. _Waiting for the last ack:_ There is a case where the sender may send the final message and since `send()` returns True on success, the sender may close the connection if not careful. The last message may be corrupt or dropped by the network so the sender must wait to receive the ACK from the receiver indicating successful transfer. The method to sit and wait for this is called in the `shutdown()` process.
 
-**Advantages:**
+_Advantages:_
 - Stop and wait requires minimal state/memory. It only needs to hold a couple flags to record state, the last packet sent, a timer, and a lock.
 - In a very unreliable network, stop and wait may reduce the number of messages in the channel since it individually asserts each message is successfully received before sending the next one.
 - In a network with very small propagation delay and small RTT, this algorithm will transmit the data quickly while minimizing the number of packets in the channel to do it.
 
-**Disadvantages:**
+_Disadvantages:_
 - This is a slow, serial algorithm. If you want to send large pieces of data, this protocol will take a long time simply due to the RTT between each send.
 - Stop and wait has very low throughput. It takes 1RTT in between each message sending in the best case. In the worst case where there is corruption or data lost, it will be at least a couple RTTs before the subsequent message is sent.
 - If the propagation delay on the network is large, the RTT will be large and this will have a direct negative impact on speed/efficiency.
@@ -51,11 +51,11 @@ What happens when packets aren't received as expected?
   1. _No space in the window for more data:_ When a call comes from above wishing to send more data, if there is no room in the window, the sender will reject the data by returning False, indicating that the app should try again to send the same data. `gbn` sleeps for 1 second before returning false, just to give a little time for the possibility of window space becoming available next call.
 
 
-**Advantages**
+_Advantages_
 - Under good network conditions (low propagation delay), GBN can take better advantage of throughput by sending multiple messages without having to wait for ACKs. This would help in cases of large files.
 - A given ACK can acknowledge multiple frames since the sequence number in an ACK indicates that all packets until that sequence number have been received successfully.
 
-**Disadvantages**
+_Disadvantages_
 - Depending on the window size, the buffer may take up a lot of space.
 - Depending on the window size, corrupted packets may result in a large amount of duplicate messages sent. For example, if the window size is 100 and the sender sends 100 windows and all of them are received without error _except the first_, all of the packets will be resent.
 - If the network is not the most stable or RTT is high, this protocol will flood the channels with duplicate messages due to timeout. Every time the server times out, it will resend all of the messages in its window. If the timeout is too fast, the receiver may have already sent ACKS for all of the messages but did not reach the sender in time. If the RTT is too high compared to the timeout, its possible that the receiver may still be processing the messages while the sender sends a duplicate batch.
@@ -74,7 +74,7 @@ When calculating the checksum for a newly created packet, the value for the chec
 [Checksum reference](http://www.roman10.net/2011/11/27/how-to-calculate-iptcpudp-checksumpart-1-theory/)
 
 
-### Playing around with network layer parameters:
+#g## Playing around with network layer parameters:
 ```bash
     values (BIT_ERROR_PROB, MSG_LOST_PROB, RTT)
 ```
