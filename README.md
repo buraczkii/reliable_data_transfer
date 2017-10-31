@@ -1,7 +1,7 @@
-## Reliable Data Transfer : 'Stop and go' and 'Go back N' protocols
+# Reliable Data Transfer : 'Stop and go' and 'Go back N' protocols
 #### Susanna Edens | October 30, 2017
 
-##### `STOP AND GO` Protocol
+### `STOP AND GO` Protocol
 THE ALGORITHM: the sender and receiver are both sending one message at a time. The sender sends a piece of data and waits for an acknowledgement from the receiver that the data was received successfully before sending the next piece of data.
 
 Both the sender and receiver code are contained within the `ss.py` file. In order to distinguish between sender and receiver actions, the following observations are made:
@@ -32,7 +32,7 @@ In a world where the underlying network has reliable data transfer properties, t
 - If the propagation delay on the network is large, the RTT will be large and this will have a direct negative impact on speed/efficiency.
 
 
-##### `GO BACK N` Protocol
+### `GO BACK N` Protocol
 THE ALGORITHM: the sender has a sliding window buffer where N is both the number of packets that it can hold in its buffer and the number of data packets (more specifically, sequence numbers) that can be in-flight from the sender. The receiver expects packets to come in order and not corrupted. If so, it will send ACKs for each successful message. If not, it sends ACKs for the last successfully received message. If the sender times out, it will send all of the packets that are in its sliding window.
 
 Both the sender and receiver code are contained within the `gbn.py` file. The same assumptions about data made in **STOP AND GO** were made here.
@@ -61,7 +61,7 @@ What happens when packets aren't received as expected?
 - If the network is not the most stable or RTT is high, this protocol will flood the channels with duplicate messages due to timeout. Every time the server times out, it will resend all of the messages in its window. If the timeout is too fast, the receiver may have already sent ACKS for all of the messages but did not reach the sender in time. If the RTT is too high compared to the timeout, its possible that the receiver may still be processing the messages while the sender sends a duplicate batch.
 
 
-##### Calculating the checksum
+### Calculating the checksum
 I chose to implement the checksum algorithm the way its implemented in actual protocols instead of the simplified version. I find bit manipulation cool and I find the fact that _the checksum of a message containing the ones complement of the checksum of its data will equal 0 if not corrupt_ fascinating. The basic steps are as follows:
 - Break the data into chunks of 16 bits and add them altogether
 - Carry the overflow if the sum is now greater than 16 bits
@@ -74,7 +74,7 @@ When calculating the checksum for a newly created packet, the value for the chec
 [Checksum reference](http://www.roman10.net/2011/11/27/how-to-calculate-iptcpudp-checksumpart-1-theory/)
 
 
-##### Playing around with network layer parameters:
+### Playing around with network layer parameters:
 ```bash
     values (BIT_ERROR_PROB, MSG_LOST_PROB, RTT)
 ```
